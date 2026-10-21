@@ -16,7 +16,7 @@
 | Checkpoint | 週次 | 報告 | 對應實作 | 狀態 |
 |---|---|---|---|---|
 | CP1 C baseline | Week 6 | [CP1.md](CP1.md) | [`c_baseline/`](../c_baseline/) | 已填寫 |
-| CP2 RV32IM 實作 | Week 6–7 | CP2.md（尚未建立） | [`rv32im/`](../rv32im/) | 未開始 |
+| CP2 RV32IM 實作 | Week 6–7 | [CP2.md](CP2.md) | [`rv32im/`](../rv32im/) | 已填寫 |
 | CP3 指令規格與編碼 | Week 8 | CP3.md（尚未建立） | [`spec/`](../spec/) | 未開始 |
 
 圖檔放在 [`figures/`](figures/)。
