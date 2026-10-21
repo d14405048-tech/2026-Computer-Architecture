@@ -9,7 +9,7 @@ cc -std=c11 -Wall -Wextra -Werror ../c_baseline/sad.c ../c_baseline/test_sad.c -
 ./test_sad
 ```
 
-成功時應輸出：
+成功時會先逐筆印出 12 行 `PASS` 結果，最後一行為：
 
 ```text
 12 tests passed.

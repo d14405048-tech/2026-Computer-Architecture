@@ -29,25 +29,29 @@ static const struct test_case test_cases[] = {
 int main(void)
 {
     size_t passed = 0;
+    size_t total = sizeof(test_cases) / sizeof(test_cases[0]);
     size_t i;
 
-    for (i = 0; i < sizeof(test_cases) / sizeof(test_cases[0]); ++i) {
+    for (i = 0; i < total; ++i) {
         const struct test_case *test = &test_cases[i];
         uint32_t actual = sad_accumulate(test->accumulator, test->rs1,
                                          test->rs2);
+        int ok = actual == test->expected;
 
-        if (actual != test->expected) {
-            fprintf(stderr,
-                    "test %zu failed: acc=0x%08" PRIx32
-                    ", rs1=%" PRId32 ", rs2=%" PRId32
-                    ", expected=0x%08" PRIx32 ", actual=0x%08" PRIx32 "\n",
-                    i + 1, test->accumulator, test->rs1, test->rs2,
-                    test->expected, actual);
-            return 1;
+        printf("Test %2zu: SAD(acc=%" PRIu32 ", rs1=%" PRId32
+               ", rs2=%" PRId32 ") = %" PRIu32 " (expected %" PRIu32 ") %s\n",
+               i + 1, test->accumulator, test->rs1, test->rs2, actual,
+               test->expected, ok ? "PASS" : "FAIL");
+        if (ok) {
+            ++passed;
         }
-        ++passed;
     }
 
-    printf("%zu tests passed.\n", passed);
-    return 0;
+    if (passed == total) {
+        printf("%zu tests passed.\n", passed);
+        return 0;
+    }
+
+    printf("%zu/%zu tests passed.\n", passed, total);
+    return 1;
 }
